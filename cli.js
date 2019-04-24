@@ -3,6 +3,8 @@
 const meow = require('meow')
 const rgbHex = require('rgb-hex')
 const hexRgb = require('hex-rgb')
+const clipboardy = require('clipboardy')
+const chalk = require('chalk')
 
 function isHex(str) {
   // optional # at beginning
@@ -37,6 +39,7 @@ const cli = meow(`
 `)
 
 const val = cli.input.join(' ')
+let convertedValue = ''
 
 if (isHex(val)) {
   let { red, green, blue, alpha } = hexRgb(val)
@@ -45,11 +48,16 @@ if (isHex(val)) {
     if (alpha.endsWith(0)) {
       alpha = parseFloat(alpha).toFixed(1)
     }
-    console.log(`rgba(${red}, ${green}, ${blue}, ${alpha})`)
+    
+    convertedValue =`rgba(${red}, ${green}, ${blue}, ${alpha})`
   } else {
-    console.log(`rgb(${red}, ${green}, ${blue})`)
+    convertedValue = `rgb(${red}, ${green}, ${blue})`
   }
 } else {
-  console.log(rgbHex(val))
+  convertedValue = rgbHex(val)
 }
+
+clipboardy.writeSync(convertedValue)
+
+console.log(chalk.green(`${convertedValue} (copied to clipboard)`))
   
