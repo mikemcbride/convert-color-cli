@@ -20,6 +20,8 @@ const cli = meow(`
   282a36
   $ convert-color 'rgba(40, 42, 54, 75%)'
   282a36bf
+  $ convert-color 'rgba(40, 42, 54, 0.75)'
+  282a36bf
   
   # hex to rgb
   $ convert-color ff9afd
@@ -31,15 +33,19 @@ const cli = meow(`
   
   # works with 8 digit hex codes
   $ convert-color 282a36bf
-  rgba(40, 42, 54, 75%)
+  rgba(40, 42, 54, 0.75)
 `)
 
-let val = cli.input.join(' ')
+const val = cli.input.join(' ')
+
 if (isHex(val)) {
   let { red, green, blue, alpha } = hexRgb(val)
   if (alpha !== 1) {
-    let pct = `${Math.floor(alpha * 100)}%`
-    console.log(`rgba(${red}, ${green}, ${blue}, ${pct})`)
+    alpha = parseFloat(alpha).toFixed(2)
+    if (alpha.endsWith(0)) {
+      alpha = parseFloat(alpha).toFixed(1)
+    }
+    console.log(`rgba(${red}, ${green}, ${blue}, ${alpha})`)
   } else {
     console.log(`rgb(${red}, ${green}, ${blue})`)
   }
