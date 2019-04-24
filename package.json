@@ -1,0 +1,38 @@
+{
+  "name": "convert-color-cli",
+  "version": "1.0.0",
+  "description": "Convert hex to rgb and vice versa",
+  "main": "cli.js",
+  "bin": {
+    "convert-color": "cli.js"
+  },
+  "files": ["cli.js"],
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemcbride/convert-color-cli.git"
+  },
+  "keywords": [
+    "color",
+    "cli",
+    "cli-app",
+    "converter",
+    "hex",
+    "rgb",
+    "convert",
+    "conversion"
+  ],
+  "author": "mikemcbride",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikemcbride/convert-color-cli/issues"
+  },
+  "homepage": "https://github.com/mikemcbride/convert-color-cli#readme",
+  "dependencies": {
+    "hex-rgb": "^4.1.0",
+    "meow": "^5.0.0",
+    "rgb-hex": "^2.1.0"
+  }
+}
