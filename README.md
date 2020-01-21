@@ -2,7 +2,7 @@
 
 Convert HEX, RGB, and HSL colors to other formats from the command line.
 
-
+<img src="screenshot.gif" width="688">
 
 ## Install
 
