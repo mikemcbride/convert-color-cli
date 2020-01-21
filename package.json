@@ -4,18 +4,18 @@
   "description": "Convert hex, rgb, and hsl from one to another from the command line",
   "license": "MIT",
   "bin": {
-    "convert-color": "index.js"
+    "convert-color": "./cli.js"
   },
   "engines": {
     "node": ">=8"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "build": "parcel build index.js"
   },
   "files": [
     "cli.js",
     "ui.js",
-    "index.js",
     "converter.js",
     "components/InputColor.js",
     "components/SelectFormat.js"
@@ -62,12 +62,14 @@
     "rgba-regex": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
     "ava": "^2.4.0",
     "chalk": "^3.0.0",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "esm": "^3.2.25",
-    "ink-testing-library": "^1.0.3"
+    "ink-testing-library": "^1.0.3",
+    "parcel-bundler": "^1.12.4"
   },
   "ava": {
     "require": [

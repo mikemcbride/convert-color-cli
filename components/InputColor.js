@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box, Text } from 'ink'
-import { UncontrolledTextInput } from 'ink-text-input'
+const React = require('react')
+const { Box, Text } = require('ink')
+const { UncontrolledTextInput } = require('ink-text-input')
 
 const InputColor = (props) => (
   <Box>
@@ -11,4 +11,4 @@ const InputColor = (props) => (
   </Box>
 )
 
-export default InputColor
+module.exports = InputColor

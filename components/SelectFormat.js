@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box, Color, Text } from 'ink'
-import SelectInput from 'ink-select-input'
+const React = require('react')
+const { Box, Color, Text } = require('ink')
+const { default: SelectInput } = require('ink-select-input')
 
 const SelectFormat = (props) => (
   <Box flexDirection="column">
@@ -12,4 +12,4 @@ const SelectFormat = (props) => (
   </Box>
 )
 
-export default SelectFormat
+module.exports = SelectFormat

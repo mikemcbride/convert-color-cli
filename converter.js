@@ -189,7 +189,7 @@ function convertColor(color, outputType) {
 // Our exports go here
 // ==================================
 
-export default {
+module.exports = {
   isHex: function(str) {
     return isHex(str)
   },

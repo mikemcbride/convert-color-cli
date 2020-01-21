@@ -1,10 +1,11 @@
 'use strict'
-import React from 'react'
-import {Text, Color, Box} from 'ink'
-import clipboardy from 'clipboardy'
-import converter from './converter'
-import SelectFormat from './components/SelectFormat'
-import InputColor from './components/InputColor'
+const React = require('react')
+const {Text, Color, Box} = require('ink')
+const clipboardy = require('clipboardy')
+const converter = require('./converter')
+const importJsx = require('import-jsx')
+const SelectFormat = importJsx('./components/SelectFormat')
+const InputColor = importJsx('./components/InputColor')
 
 class App extends React.Component {
   constructor(props) {
