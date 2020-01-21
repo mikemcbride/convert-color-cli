@@ -1,6 +1,8 @@
 # convert-color-cli
 
-Convert HEX codes to RGB and vice-versa from the command line.
+Convert HEX, RGB, and HSL colors to other formats from the command line.
+
+<img src="screenshot.gif" width="688">
 
 ## Install
 
@@ -14,36 +16,38 @@ npm install -g convert-color-cli # or yarn global add convert-color-cli
 
 ### Globally
 
-Convert RGB to HEX. You can pass the three RGB values as separate arguments or you can pass the full `rgb(x,x,x)` string wrapped in quotes. If doing RGBA, you must wrap in quotes.
+Convert RGB, HEX, or HSL, including alpha values for all three. You can pass any color code in as the optional first parameter:
 
 ```sh
-$ convert-color 255 154 253
-> ff9afd
-
 $ convert-color 'rgb(40, 42, 54)'
-> 282a36
-
 $ convert-color 'rgba(40, 42, 54, 75%)'
-> 282a36bf
+$ convert-color ff9afd
+$ convert-color '#282a36'
+$ convert-color 282a36bf
+$ convert-color 'hsl(336, 100%, 50%)'
+$ convert-color 'hsla(336, 100%, 50%, 0.75)'
 ```
 
-Convert HEX to RGB. The `#` is optional but if you include it you must wrap the input in quotes. It can also handle HEX codes with alpha values.
+The CLI app will detect the format of the color you input and ask which type you'd like to convert it to:
 
 ```sh
-$ convert-color ff9afd
-> rgb(255, 154, 253)
-$ convert-color '#282a36'
-> rgb(40, 42, 54)
-$ convert-color 282a36bf
-> rgba(40, 42, 54, 75%)
+$ convert-color 'hsl(336, 100%, 50%)'
+
+Convert hsl(336, 100%, 50%) to which format:
+
+❯ HEX
+  RGB
 ```
 
-## Related
+Upon selecting a format, the converted value will be displayed and the result is copied to your clipboard:
 
-This CLI makes heavy use of these excellent modules under the hood:
+```sh
+$ convert-color 'hsl(336, 100%, 50%)'
 
-- [hex-rgb](https://github.com/sindresorhus/hex-rgb) - Convert HEX to RGB
-- [rgb-hex](https://github.com/sindresorhus/rgb-hex) - Convert RGB to HEX
+hsl(336, 100%, 50%) converted to RGB is rgb(255, 0, 102).
+
+It has been copied to your clipboard.
+```
 
 ## License
 

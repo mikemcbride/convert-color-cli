@@ -1,17 +1,25 @@
 {
   "name": "convert-color-cli",
-  "version": "1.1.1",
-  "description": "Convert hex to rgb and vice versa",
-  "main": "cli.js",
+  "version": "2.0.0",
+  "description": "Convert hex, rgb, and hsl from one to another from the command line",
+  "license": "MIT",
   "bin": {
-    "convert-color": "cli.js"
+    "convert-color": "./cli.js"
   },
-  "files": [
-    "cli.js"
-  ],
   "engines": {
     "node": ">=8"
   },
+  "scripts": {
+    "test": "ava",
+    "build": "parcel build index.js"
+  },
+  "files": [
+    "cli.js",
+    "ui.js",
+    "converter.js",
+    "components/InputColor.js",
+    "components/SelectFormat.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikemcbride/convert-color-cli.git"
@@ -27,16 +35,50 @@
     "conversion"
   ],
   "author": "mikemcbride",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mikemcbride/convert-color-cli/issues"
   },
   "homepage": "https://github.com/mikemcbride/convert-color-cli#readme",
   "dependencies": {
-    "chalk": "^2.4.2",
-    "clipboardy": "^2.0.0",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "clipboardy": "^2.1.0",
     "hex-rgb": "^4.1.0",
-    "meow": "^5.0.0",
-    "rgb-hex": "^2.1.0"
+    "hex-to-hsl": "^1.0.2",
+    "hsl-regex": "^1.0.0",
+    "hsl-to-rgb-for-reals": "^1.1.1",
+    "hsla-regex": "^1.0.0",
+    "import-jsx": "^3.1.0",
+    "ink": "^2.6.0",
+    "ink-select-input": "^3.1.2",
+    "ink-text-input": "^3.2.2",
+    "meow": "^6.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "rgb-hex": "^3.0.0",
+    "rgb-regex": "^1.0.1",
+    "rgb-to-hsl": "^0.0.3",
+    "rgba-regex": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "ava": "^2.4.0",
+    "chalk": "^3.0.0",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "esm": "^3.2.25",
+    "ink-testing-library": "^1.0.3",
+    "parcel-bundler": "^1.12.4"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   }
 }

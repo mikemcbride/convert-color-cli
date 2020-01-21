@@ -1,63 +1,42 @@
 #!/usr/bin/env node
 'use strict'
+const React = require('react')
+const importJsx = require('import-jsx')
+const {render} = require('ink')
 const meow = require('meow')
-const rgbHex = require('rgb-hex')
-const hexRgb = require('hex-rgb')
-const clipboardy = require('clipboardy')
-const chalk = require('chalk')
 
-function isHex(str) {
-  // optional # at beginning
-  // matches a-f, A-F, 0-9 exactly 8, 6, or 3 times
-  let hexRegex = /^#?([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/
-  return hexRegex.test(str)
-}
+const ui = importJsx('./ui')
 
 const cli = meow(`
   Examples
-  # rgb to hex
-  $ convert-color 255 154 253
-  ff9afd
+  # rgb
   $ convert-color 'rgb(40, 42, 54)'
-  282a36
+
+  # alpha values can be % or decimal
   $ convert-color 'rgba(40, 42, 54, 75%)'
-  282a36bf
   $ convert-color 'rgba(40, 42, 54, 0.75)'
-  282a36bf
-  
-  # hex to rgb
+
+  # hex
   $ convert-color ff9afd
-  rgb(255, 154, 253)
-  
+
   # can have a pound sign at beginning
   $ convert-color '#282a36'
-  rgb(40, 42, 54)
-  
-  # works with 8 digit hex codes
+
+  # works with 8 digit hex codes (opacity)
   $ convert-color 282a36bf
-  rgba(40, 42, 54, 0.75)
+
+  # hsl
+  $ convert-color 'hsl(336, 100%, 50%)'
+
+  # alpha values can be % or decimal
+  $ convert-color 'hsla(336, 100%, 50%, 75%)'
+  $ convert-color 'hsla(336, 100%, 50%, 0.75)'
+
+  # you can also omit a color and input it using the interactive input
+  $ convert-color
+
+  Enter the color you want to convert:
 `)
 
-const val = cli.input.join(' ')
-let convertedValue = ''
-
-if (isHex(val)) {
-  let { red, green, blue, alpha } = hexRgb(val)
-  if (alpha !== 1) {
-    alpha = parseFloat(alpha).toFixed(2)
-    if (alpha.endsWith(0)) {
-      alpha = parseFloat(alpha).toFixed(1)
-    }
-    
-    convertedValue =`rgba(${red}, ${green}, ${blue}, ${alpha})`
-  } else {
-    convertedValue = `rgb(${red}, ${green}, ${blue})`
-  }
-} else {
-  convertedValue = rgbHex(val)
-}
-
-clipboardy.writeSync(convertedValue)
-
-console.log(chalk.green(`${convertedValue} (copied to clipboard)`))
-  
+const initialColor = cli.input.length === 0 ? null : cli.input.join(' ')
+module.exports = render(React.createElement(ui, { color: initialColor }))
