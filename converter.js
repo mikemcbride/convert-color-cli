@@ -196,35 +196,17 @@ module.exports = {
   getConversionOptionsFromColor: function(color) {
     let result
     if (isHex(color)) {
-      result = [
-        { label: 'RGB', value: 'rgb' },
-        { label: 'HSL', value: 'hsl' }
-      ]
+      result = ['rgb', 'hsl' ]
     } else if (isHexa(color)) {
-      result = [
-        { label: 'RGBA', value: 'rgba' },
-        { label: 'HSLA', value: 'hsla' }
-      ]
+      result = ['rgba', 'hsla' ]
     } else if (isRgb(color)) {
-      result = [
-        { label: 'HEX', value: 'hex' },
-        { label: 'HSL', value: 'hsl' }
-      ]
+      result = ['hex', 'hsl' ]
     } else if (isRgba(color)) {
-      result = [
-        { label: 'HEX', value: 'hexa' },
-        { label: 'HSLA', value: 'hsla' }
-      ]
+      result = ['hexa', 'hsla' ]
     } else if (isHsl(color)) {
-      result = [
-        { label: 'HEX', value: 'hex' },
-        { label: 'RGB', value: 'rgb' }
-      ]
+      result = ['hex', 'rgb' ]
     } else if (isHsla(color)) {
-      result = [
-        { label: 'HEX', value: 'hexa' },
-        { label: 'RGBA', value: 'rgba' }
-      ]
+      result = ['hexa', 'rgba' ]
     }
 
     return result

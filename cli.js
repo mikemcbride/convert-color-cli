@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 'use strict'
-const React = require('react')
-const importJsx = require('import-jsx')
-const {render} = require('ink')
 const meow = require('meow')
-
-const ui = importJsx('./ui')
+const convertColor = require('./convertColor')
 
 const cli = meow(`
   Examples
@@ -39,4 +35,4 @@ const cli = meow(`
 `)
 
 const initialColor = cli.input.length === 0 ? null : cli.input.join(' ')
-module.exports = render(React.createElement(ui, { color: initialColor }))
+module.exports = convertColor(initialColor)
