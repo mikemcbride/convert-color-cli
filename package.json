@@ -1,6 +1,6 @@
 {
   "name": "convert-color-cli",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Convert hex, rgb, and hsl from one to another from the command line",
   "license": "MIT",
   "bin": {
