@@ -1,7 +1,26 @@
 const clipboardy = require('clipboardy')
-const converter = require('./converter')
+const converter = require('convert-color-js')
 const { prompt } = require('enquirer')
 const c = require('ansi-colors')
+
+function getConversionOptionsFromColor (color) {
+  let result
+  if (converter.isHex(color)) {
+    result = ['rgb', 'hsl' ]
+  } else if (converter.isHexa(color)) {
+    result = ['rgba', 'hsla' ]
+  } else if (converter.isRgb(color)) {
+    result = ['hex', 'hsl' ]
+  } else if (converter.isRgba(color)) {
+    result = ['hexa', 'hsla' ]
+  } else if (converter.isHsl(color)) {
+    result = ['hex', 'rgb' ]
+  } else if (converter.isHsla(color)) {
+    result = ['hexa', 'rgba' ]
+  }
+
+  return result
+}
 
 module.exports = async function convertColor(initialColor) {
   let initialStage = initialColor === null ? 0 : 1
@@ -29,7 +48,7 @@ module.exports = async function convertColor(initialColor) {
     return
   }
 
-  let conversionOptions = converter.getConversionOptionsFromColor(initialColor)
+  let conversionOptions = getConversionOptionsFromColor(initialColor)
   if (!conversionOptions) {
     console.log(c.red('Unable to get conversion options for color.'))
     return
@@ -42,7 +61,7 @@ module.exports = async function convertColor(initialColor) {
     choices: conversionOptions
   })
 
-  const output = converter.convertColor(initialColor, outputType)
+  const output = converter.convert(initialColor, outputType)
 
   if (output === undefined) {
     // convertColor returns undefined if it cannot convert. this indicates an error.

@@ -49,6 +49,10 @@ hsl(336, 100%, 50%) converted to RGB is rgb(255, 0, 102).
 It has been copied to your clipboard.
 ```
 
+## Related
+
+- [convert-color-js](https://github.com/mikemcbride/convert-color) - the Node module the powers this CLI. You can also use it in the browser.
+
 ## License
 
 MIT © [Mike McBride](https://mikemcbride.me)
