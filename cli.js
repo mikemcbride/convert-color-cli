@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
-const meow = require('meow')
-const convertColor = require('./convertColor')
+import meow from 'meow';
+import convertColor from './convertColor.js';
 
 const cli = meow(`
   Examples
@@ -32,7 +32,9 @@ const cli = meow(`
   $ convert-color
 
   Enter the color you want to convert:
-`)
+`, {
+  importMeta: import.meta
+})
 
-const initialColor = cli.input.length === 0 ? null : cli.input.join(' ')
-module.exports = convertColor(initialColor)
+const initialColor = cli.input.length === 0 ? null : cli.input.join(' ');
+export default convertColor(initialColor);
