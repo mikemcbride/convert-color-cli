@@ -1,7 +1,8 @@
-const clipboardy = require('clipboardy')
-const converter = require('convert-color-js')
-const { prompt } = require('enquirer')
-const c = require('ansi-colors')
+import clipboardy from 'clipboardy'
+import converter from 'convert-color-js'
+import c from 'ansi-colors'
+import pkg from 'enquirer'
+const { prompt } = pkg
 
 function getConversionOptionsFromColor (color) {
   let result
@@ -22,7 +23,7 @@ function getConversionOptionsFromColor (color) {
   return result
 }
 
-module.exports = async function convertColor(initialColor) {
+export default async function convertColor(initialColor) {
   let initialStage = initialColor === null ? 0 : 1
 
   if (initialStage === 1) {
